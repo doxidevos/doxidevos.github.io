@@ -176,7 +176,7 @@ function chkver()
 			mkdir(newversionsave)
 				store(newversionsave, newversiondata, {})
 			print("Your update has been downloaded and loaded to memory!")
-			run_terminal_command("load " ..  newversionname) 
+			run_terminal_command("load " ..  newversionsave) 
 			run_terminal_command("run")
 			
 				

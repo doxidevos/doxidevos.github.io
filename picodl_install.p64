@@ -2,7 +2,7 @@ picotron cartridge // www.picotron.net
 version 2
 
 :: main.lua
---[[pod_format="raw",created="2025-02-12 05:53:39",modified="2025-02-12 08:20:07",revision=23]]
+--[[pod_format="raw",created="2025-02-12 05:53:39",modified="2025-02-12 08:34:32",revision=24]]
 -- INSTALLER CART FOR PICOTRON DOWNLOADER
 -- This script installs a downloader command into /appdata/system/util.
 -- Once installed, you can run the downloader from the terminal as "picodl".
@@ -28,50 +28,58 @@ local url = args[1] or ""
 local baseName = args[2] or ""
 local ext = args[3] or ""
 local currentver = "1"
-local onlinever = fetch("https://doxidevos.github.io/picodlver.txt")
+local onlinever
+
+-- Fetch online version first
+onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
+onlinever = onlinever:gsub("\n", "") -- Removing any newline character from the fetched version.
+
 local newversiondata = ""
-local newversionsave = "/desktop/picodlupd/install_picodl_version" .. onlinever .. ".p64"
+local newversionsave = "/desktop/picodlupd/install_picodl_version/" .. onlinever .. ".p64"
 local newversionname = "install_picodl_version" .. onlinever .. ".p64"
 
-
 function chkver()
-	print("Checking For Updates")
-	if currentver == onlinever then
-		print("No Updates Available")
-	else
-		print("Downloading update...")
-			newversiondata = fetch("https://doxidevos.github.io/picodl_install.p64")
-			mkdir("/desktop/picodlupd/")
-				print(newversiondata)
-					store(newversionsave, newversiondata, {})
-			print("A folder was created on your desktop, no need to worry!")
-			print("This file is to load the new update into your ram!")
-			print("Just press ctrl+a whenever you are ready to finish the update!")
-			
-				
-	end	
+    print("Checking For Updates")
+    if currentver == onlinever or onlinever == "" then
+        print("No Updates Available")
+    else
+        print("Downloading update...")
+        newversiondata = fetch("https://doxidevos.github.io/picodl_install.p64") or ""
+        
+        if newversiondata == "" then
+            print("Update download failed.")
+            return false
+        end
+
+        mkdir("/desktop/picodlupd/")
+        mkdir("/desktop/picodlupd/install_picodl_version/")
+
+        store(newversionsave, newversiondata, {})
+        print("Your update is in a folder on your desktop. Run it whenever possible please :)")
+    end	
 end
 
+-- Check for an update
 chkver()
 
 if url == "" or baseName == "" or ext == "" then
-  print("Usage: picodl \"<download URL>\" \"base file name\" \"file extension\"")
-  return
+    print("Usage: picodl \"<download URL>\" \"base file name\" \"file extension\"")
+    return
 end
 
 -- Ensure the extension starts with a dot.
-if ext:sub(1,1) ~= "." then ext = "." .. ext end
+if ext:sub(1, 1) ~= "." then ext = "." .. ext end
 local fileName = baseName .. ext
+
 -- Save the file to /desktop (i.e. root/Desktop).
 local fullPath = "/desktop/" .. fileName
 
-chkver()
-
 print("Downloading from: " .. url)
-local data = fetch(url)
-if not data then
-  print("Download failed for URL: " .. url)
-  return
+local data = fetch(url) or ""
+
+if data == "" then
+    print("Download failed for URL: " .. url)
+    return
 end
 
 store(fullPath, data, {})  -- Always pass an empty table for metadata.

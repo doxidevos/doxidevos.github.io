@@ -2,7 +2,7 @@ picotron cartridge // www.picotron.net
 version 2
 
 :: main.lua
---[[pod_format="raw",created="2025-02-12 05:53:39",modified="2025-02-12 08:01:51",revision=21]]
+--[[pod_format="raw",created="2025-02-12 05:53:39",modified="2025-02-12 08:20:07",revision=23]]
 -- INSTALLER CART FOR PICOTRON DOWNLOADER
 -- This script installs a downloader command into /appdata/system/util.
 -- Once installed, you can run the downloader from the terminal as "picodl".
@@ -30,7 +30,7 @@ local ext = args[3] or ""
 local currentver = "1"
 local onlinever = fetch("https://doxidevos.github.io/picodlver.txt")
 local newversiondata = ""
-local newversionsave = "/appdata/picodlversions/install_picodl_version" .. onlinever .. ".p64"
+local newversionsave = "/desktop/picodlupd/install_picodl_version" .. onlinever .. ".p64"
 local newversionname = "install_picodl_version" .. onlinever .. ".p64"
 
 
@@ -41,15 +41,18 @@ function chkver()
 	else
 		print("Downloading update...")
 			newversiondata = fetch("https://doxidevos.github.io/picodl_install.p64")
-			mkdir("/desktop/picodlversions/")
-				store(newversionsave, newversiondata, {})
-			print("Your update is in a folder on your desktop. Run it whenever possible please :)")
+			mkdir("/desktop/picodlupd/")
+				print(newversiondata)
+					store(newversionsave, newversiondata, {})
+			print("A folder was created on your desktop, no need to worry!")
+			print("This file is to load the new update into your ram!")
+			print("Just press ctrl+a whenever you are ready to finish the update!")
 			
 				
 	end	
 end
 
-checkver()
+chkver()
 
 if url == "" or baseName == "" or ext == "" then
   print("Usage: picodl \"<download URL>\" \"base file name\" \"file extension\"")
@@ -83,7 +86,7 @@ mkdir("/appdata/system/util")
 -- Install the downloader command by storing it into /appdata/system/util as "picodl.lua".
 store("/appdata/system/util/picodl.lua", downloader_code, {})
 
-print("Version 2 Installation complete! The downloader command 'picodl' has been installed.")
+print("Installation complete! The downloader command 'picodl' has been installed.")
 print("You can now run it from the terminal as:")
 print('  picodl "download URL" "base file name" "file extension"')
 print("Reboot Reccomended!")

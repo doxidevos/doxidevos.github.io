@@ -217,7 +217,7 @@ mkdir("/appdata/system/util")
 
 -- Install the downloader command by storing it into /appdata/system/util as "picodl.lua".
 store("/appdata/system/util/picodl.lua", downloader_code, {})
-store("/appdata/system/util/terminal_exec.lua", terminal_exec, {})
+store("/appdata/system/util/terminal.lua", terminal_exec, {})
 
 print("Installation complete! The downloader command 'picodl' has been installed.")
 print("You can now run it from the terminal as:")

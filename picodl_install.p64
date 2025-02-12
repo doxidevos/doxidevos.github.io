@@ -159,7 +159,7 @@ local args = env().argv or {}
 local url = args[1] or ""
 local baseName = args[2] or ""
 local ext = args[3] or ""
-local currentver = "1"
+local currentver = "2"
 local onlinever = fetch("https://doxidevos.github.io/picodlver.txt")
 local newversiondata = ""
 local newversionsave = "/appdata/picdlversions/install_picodl_version" .. onlinever
@@ -177,11 +177,15 @@ function chkver()
 				store(newversionsave, newversiondata, {})
 			print("Your update has been downloaded and loaded to memory!")
 			run_terminal_command("load " ..  newversionname) 
-			print("Please press Ctrl+R to finish the update whenever you're ready")
+			run_terminal_command("run")
 			
 				
 	end	
 end
+
+print("PicoDL Version 2")
+
+chkver()
 
 if url == "" or baseName == "" or ext == "" then
   print("Usage: picodl \"<download URL>\" \"base file name\" \"file extension\"")

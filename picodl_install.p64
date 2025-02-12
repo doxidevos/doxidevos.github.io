@@ -27,7 +27,7 @@ local args = env().argv or {}
 local url = args[1] or ""
 local baseName = args[2] or ""
 local ext = args[3] or ""
-local currentver = "1"
+local currentver = "2"
 local onlinever
 
 -- Fetch online version first

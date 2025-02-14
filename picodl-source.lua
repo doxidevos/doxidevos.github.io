@@ -8,6 +8,7 @@ local baseName = args[3] or ""
 local ext = args[4] or ""
 local currentver = "4"
 local onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
+local fullPath = ""
 
 -- Fetch online version first
 onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
@@ -53,7 +54,7 @@ if ext:sub(1, 1) ~= "." then ext = "." .. ext end
 local fileName = baseName .. ext
 
 -- Save the file to /desktop (i.e. root/Desktop).
-local fullPath = "/desktop/" .. fileName
+fullPath = "/desktop/" .. fileName
 
 print("Downloading from: " .. url)
 local data = fetch(url) or ""
@@ -64,7 +65,6 @@ if data == "" then
 	end
 	
 print("This feature will be added soon")
-local fullPath = "Canceled By Program"
 
 	elseif type == "cart" then
 	

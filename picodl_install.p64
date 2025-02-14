@@ -28,8 +28,8 @@ local type = args[1] or ""
 local url = args[2] or ""
 local baseName = args[3] or ""
 local ext = args[4] or ""
-local currentver = "3"
-local onlinever
+local currentver = "4"
+local onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
 
 -- Fetch online version first
 onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
@@ -105,12 +105,12 @@ end
 
 
 store(fullPath, data, {})  -- Always pass an empty table for metadata.
-if type == "web" then
+if type == "cart" then
+print("Work In Progress feature")
+elseif type == "web" then
 print("Download complete! File saved as: " .. fullPath)
-else if type == "cart" then
-print("This feature is in the works!")
 else
-print("Uh Oh! Something happened!")
+print("How the heck did you do that!?!?!?")
 end
 end
 end

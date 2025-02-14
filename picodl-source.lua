@@ -6,7 +6,7 @@ local type = args[1] or ""
 local url = args[2] or ""
 local baseName = args[3] or ""
 local ext = args[4] or ""
-local currentver = "4"
+local currentver = "2"
 local onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
 
 -- Fetch online version first
@@ -66,7 +66,7 @@ if data == "" then
 print("This feature will be added soon")
 local fullPath = "Canceled By Program"
 
-	else if type == "cart" then
+	elseif type == "cart" then
 	
 if url  == "" then
 print("Usage: picodl cart \"<cart name>\" (not added yet, coming soon)")
@@ -89,6 +89,4 @@ elseif type == "web" then
 print("Download complete! File saved as: " .. fullPath)
 else
 print("How the heck did you do that!?!?!?")
-end
-end
 end

@@ -41,7 +41,7 @@ end
 -- Check for an update
 chkver()
 
-if type == web then
+if type == "web" then
 
 if url == "" or baseName == "" or ext == "" then
     print("Usage: picodl web \"<download URL>\" \"base file name\" \"file extension\"")

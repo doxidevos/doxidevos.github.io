@@ -28,7 +28,8 @@ local type = args[1] or ""
 local url = args[2] or ""
 local baseName = args[3] or ""
 local ext = args[4] or ""
-local currentver = "2"
+local currentver = "4
+"
 local onlinever = fetch("https://doxidevos.github.io/picodlver.txt") or ""
 
 -- Fetch online version first

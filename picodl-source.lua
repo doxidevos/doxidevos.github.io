@@ -2,10 +2,11 @@
 -- Usage: picodl "download URL" "base file name" "file extension"
 
 local args = env().argv or {}
-local url = args[1] or ""
-local baseName = args[2] or ""
-local ext = args[3] or ""
-local currentver = "2"
+local type = args[1] or ""
+local url = args[2] or ""
+local baseName = args[3] or ""
+local ext = args[4] or ""
+local currentver = "3"
 local onlinever
 
 -- Fetch online version first
@@ -40,8 +41,10 @@ end
 -- Check for an update
 chkver()
 
+if type == web then
+
 if url == "" or baseName == "" or ext == "" then
-    print("Usage: picodl \"<download URL>\" \"base file name\" \"file extension\"")
+    print("Usage: picodl web \"<download URL>\" \"base file name\" \"file extension\"")
     return
 end
 
@@ -58,21 +61,34 @@ local data = fetch(url) or ""
 if data == "" then
     print("Download failed for URL: " .. url)
     return
+	end
+	
+print("This feature will be added soon")
+local fullPath = "Canceled By Program"
+
+	else if type == "cart" then
+	
+if url  == "" then
+print("Usage: picodl cart \"<cart name>\" (not added yet, coming soon)")
+return
 end
 
+else
+print("Usage: picodl \"<web/cart>\" \"<download URL>\" \"base file name\" \"file extension\"")
+print(" or picodl cart \"<cart name>\" which will be added soon")
+   return
+
+end
+
+
+
 store(fullPath, data, {})  -- Always pass an empty table for metadata.
+if type == "web" then
 print("Download complete! File saved as: " .. fullPath)
-
-
-]]
-
--- Ensure the system util folder exists.
-mkdir("/appdata/system/util")
-
--- Install the downloader command by storing it into /appdata/system/util as "picodl.lua".
-store("/appdata/system/util/picodl.lua", downloader_code, {})
-
-print("Installation complete! The downloader command 'picodl' has been installed.")
-print("You can now run it from the terminal as:")
-print('  picodl "download URL" "base file name" "file extension"')
-print("Reboot Reccomended!")
+else if type == "cart" then
+print("This feature is in the works!")
+else
+print("Uh Oh! Something happened!")
+end
+end
+end

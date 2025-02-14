@@ -114,6 +114,18 @@ print("Uh Oh! Something happened!")
 end
 end
 end
+]]
+
+-- Ensure the system util folder exists.
+mkdir("/appdata/system/util")
+
+-- Install the downloader command by storing it into /appdata/system/util as "picodl.lua".
+store("/appdata/system/util/picodl.lua", downloader_code, {})
+
+print("Installation complete! The downloader command 'picodl' has been installed.")
+print("You can now run it from the terminal as:")
+print('  picodl "download URL" "base file name" "file extension"')
+print("Reboot Reccomended!")
 
 :: .info.pod
 b64$LS1bW3BvZCxjcmVhdGVkPSIyMDI1LTAyLTEyIDA1OjUzOjI4Iixtb2RpZmllZD0iMjAyNS0w

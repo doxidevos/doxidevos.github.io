@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VMCb - Virtual Machine Chaos Beta</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <img src="assets/images/logo.png" alt="VMCb Logo" class="logo">
+    <h1>VMCb - Virtual Machine Chaos Beta</h1>
+  </header>
+
+  <main>
+    <section id="notice">
+      <h2>Welcome to VM-CHAOS</h2>
+      <p><strong>NOTICE:</strong> This site is AI generated to start with, but with help from collaborators, it will evolve into a community tool. Use it carefully. Do not store any important data—everything is ephemeral and subject to chaos.</p>
+    </section>
+
+    <section id="intro">
+      <p>
+        Submit your virtual machine either by uploading a VM image file or by providing live connection details (e.g., SSH/remote access info). Multiple users may connect to the same VM.
+      </p>
+      <p><a href="submit.html">Submit Your VM</a> | <a href="tos.html">View Terms of Service</a></p>
+    </section>
+
+    <section id="vms">
+      <h2>Current VM Submissions</h2>
+      <div id="vm-list">
+        <!-- Dynamically loaded VM entries from data/vms.json -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 VM-CHAOS Community</p>
+    <p><a href="about.html">About</a></p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

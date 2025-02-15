@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit Your VM - VMCb</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" alt="VMCb Logo" class="logo"></a>
+    <h1>Submit Your VM</h1>
+  </header>
+
+  <main>
+    <form id="vm-submission-form" enctype="multipart/form-data">
+      <!-- VM Name -->
+      <label for="vm_name">VM Name:</label>
+      <input type="text" id="vm_name" name="vm_name" placeholder="Enter a name for your VM" required>
+
+      <!-- Submission Type -->
+      <fieldset>
+        <legend>Submission Type:</legend>
+        <label><input type="radio" name="vm_submission_type" value="file" checked> VM File Upload</label>
+        <label><input type="radio" name="vm_submission_type" value="live"> Live Connection</label>
+      </fieldset>
+
+      <!-- VM Type -->
+      <label for="vm_type">VM Type:</label>
+      <select id="vm_type" name="vm_type" required>
+        <option value="">--Select--</option>
+        <option value="self-hosted">Self-hosted</option>
+        <option value="cloud-hosted">Cloud-hosted</option>
+        <option value="hardware">Hardware</option>
+      </select>
+
+      <!-- Access Methods -->
+      <label for="access_methods">Access Methods:</label>
+      <select id="access_methods" name="access_methods" multiple required>
+        <option value="ssh">SSH</option>
+        <option value="sshx">sshx (Web Terminal)</option>
+        <option value="virtualbox">VirtualBox</option>
+        <option value="other">Other</option>
+      </select>
+
+      <!-- Access Information (for live connections) -->
+      <div id="live-access-fields" style="display: none;">
+        <label for="access_info">Live Access Information:</label>
+        <input type="text" id="access_info" name="access_info" placeholder="e.g., ssh://live.example.com:2222">
+      </div>
+
+      <!-- VM Description -->
+      <label for="vm_description">VM Description:</label>
+      <textarea id="vm_description" name="vm_description" placeholder="Describe your VM and any additional info" required></textarea>
+
+      <!-- VM File Upload (for file submissions) -->
+      <div id="file-upload-field">
+        <label for="vm_file">VM File Upload:</label>
+        <input type="file" id="vm_file" name="vm_file" accept=".iso,.img,.vhd,.ova">
+      </div>
+
+      <button type="submit">Submit VM</button>
+    </form>
+    <div id="submission-message"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 VM-CHAOS Community</p>
+    <p><a href="tos.html">Terms of Service</a> | <a href="index.html">Home</a></p>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+/* Basic CSS for VM-CHAOS prototype */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+header, footer {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.logo {
+  max-width: 100px;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+main {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: #222;
+}
+
+form {
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+}
+
+form input[type="text"],
+form select,
+form textarea,
+form input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+}
+
+form button {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 3px;
+  background: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #0056b3;
+}
+
+#vm-list {
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+footer p {
+  margin: 0.5rem 0;
+}
